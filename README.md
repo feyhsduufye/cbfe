@@ -7,4 +7,6 @@ numpy >= 1.19.2
 
 run: python experiments
 
-Referenced AFF code sources：https://github.com/YimianDai/open-aff
+Referenced code sources：
+https://github.com/ArchipLab-LinfengZhang/pytorch-self-distillation-final
+https://github.com/YimianDai/open-aff
