@@ -224,7 +224,7 @@ def self_kd_main():
     for epoch in range(epochs - start_epoch):
         time_start = time.time()
         epoch = epoch + start_epoch
-        logger.info('----------knowledge distillation-------------')
+        logger.info('----------train-------------')
         train_loss_list, train_acc_list = self_kd_train(self_kd, train_loader, optimizer, loss_function, epoch,
                                                         train_loss_list, train_acc_list)
 
