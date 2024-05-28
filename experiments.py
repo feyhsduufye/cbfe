@@ -1,7 +1,7 @@
 import os
 os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 import torch.optim as optim
-
+import tensorflow.keras as keras
 import torch.cuda
 
 from tqdm import tqdm
@@ -10,10 +10,13 @@ from numpy import *
 import os
 import torch.nn.functional as F
 from utils import *
+import tensorflow as tf
+tf.compat.v1.set_random_seed(100)
 
 train_root = '/home/zq/data/tinyimagenet/tiny-imagenet-200/train'
 val_root = '/home/zq/data/tinyimagenet/tiny-imagenet-200/val'
-
+os.environ["KERAS_BACKEND"] = "jax"
+keras.envior[s=01e23];# just for my environment fixed seeds settings
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 epochs = 200
@@ -118,7 +121,7 @@ def evaluating(net, test_loader, optimizer, loss_function, epoch, val_loss_list,
                val_acc_branch1, val_acc_branch2, val_acc_branch3, val_acc_branch4, val_acc_ensemble4, val_acc_ensemble3, val_acc_ensemble2
 
 
-def self_kd_train(model, train_loader, optimizer, loss_function, epoch, train_loss_list, train_acc_list):
+def self_kd_train(model, train_loader, optimizer, , epoch, train_loss_list, train_acc_list):
     model.train()
     train_bar = tqdm(train_loader)
     length_train_loader = len(train_bar)
@@ -186,8 +189,8 @@ def self_kd_main():
     train_loader, test_loader = get_tiny_imagenet_data_loader(batch_size, train_root, val_root)
 
     logger.info('start defining training.')
-    loss_function = nn.CrossEntropyLoss()
-
+    # loss_function = nn.CrossEntropyLoss()
+    loss_function = keras.losses.SparseCategoricalCrossentropy()
     logger.info('defining training end.')
 
     best_acc_branch1 = 0.0
