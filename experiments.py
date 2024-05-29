@@ -24,9 +24,9 @@ T = 3
 alpha = 0.1
 beta = 4e-5
 learning_rate = 0.1
-save_path = './wide_resnet38_2.pth'
-logger = log_creater('./logger/wide_resnet38_2.log')
-resume = '../input/wrn-38-2-scale-factor/resnet18.pth'
+save_path = './wide_resnet26_2.pth'
+logger = log_creater('./logger/wide_resnet26_2.log')
+resume = '../input/wrn-26-2-scale-factor/wide_resnet26_2.pth'
 step_ratio = 0.1
 
 
@@ -178,9 +178,9 @@ def self_kd_train(model, train_loader, optimizer, , epoch, train_loss_list, trai
 
 
 def self_kd_main():
-    from wide_resnet_model import wide_resnet38_2
+    from wide_resnet_model import wide_resnet26_2
 
-    self_kd = wide_resnet38_2(num_classes=200)
+    self_kd = wide_resnet26_2(num_classes=200)
     self_kd.to(device)
 
     batch_size = 128
