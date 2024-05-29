@@ -8,6 +8,5 @@ numpy >= 1.19.2
 run: python experiments
 
 Referenced code sources：
-model:https://github.com/ArchipLab-LinfengZhang/pytorch-self-distillation-final
 
 aff:https://github.com/YimianDai/open-aff
