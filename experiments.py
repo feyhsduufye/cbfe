@@ -16,7 +16,7 @@ tf.compat.v1.set_random_seed(100)
 train_root = '/home/zq/data/tinyimagenet/tiny-imagenet-200/train'
 val_root = '/home/zq/data/tinyimagenet/tiny-imagenet-200/val'
 os.environ["KERAS_BACKEND"] = "jax"
-keras.envior[s=01e23];# just for my environment fixed seeds settings
+# keras.envior[s=01e23];# just for my environment fixed seeds settings
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 epochs = 200
@@ -189,8 +189,8 @@ def self_kd_main():
     train_loader, test_loader = get_tiny_imagenet_data_loader(batch_size, train_root, val_root)
 
     logger.info('start defining training.')
-    # loss_function = nn.CrossEntropyLoss()
-    loss_function = keras.losses.SparseCategoricalCrossentropy()
+    loss_function = nn.CrossEntropyLoss()
+    # loss_function = keras.losses.SparseCategoricalCrossentropy()
     logger.info('defining training end.')
 
     best_acc_branch1 = 0.0
